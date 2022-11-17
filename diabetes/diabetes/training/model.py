@@ -22,6 +22,10 @@ def train(model, X_train, y_train, X_features_l):
 
     # train model
     model_dict = {'rf': RandomForestClassifier(), 'lr': LogisticRegression()}
+
+    if model not in model_dict.keys():
+        raise Exception (f'Currently only following algorithms are integrated {model_dict.keys()}. Please specify one of those!!')
+    
     trained_model = model_dict[model].fit(X_train, y_train)
 
     return trained_model
@@ -52,10 +56,7 @@ def predict(trained_model, X_train, y_train, X_test, y_test, X_features_l):
     y_train = pd.DataFrame(y_train)
     y_test = pd.DataFrame(y_test)
 
-    print('y_train>>>', y_train)
-    print('y_test>>>', y_test)
-
-
+    # set predictions column
     y_train['predictions'] = train_preds
     y_test['predictions'] = test_preds
 

@@ -25,7 +25,7 @@ setup(
     name='diabetes',
     license='MIT',
     packages=find_packages(where='diabetes', exclude=['tests']),
-    package_dir={'': 'diabetes'},
+    # package_dir={'': 'diabetes'},
     install_requires=get_requirements(),
     setup_requires=['pytest-runner', 'wheel'],
     url='',

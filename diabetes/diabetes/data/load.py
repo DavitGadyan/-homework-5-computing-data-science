@@ -11,6 +11,9 @@ def from_csv(filename):
     Returns:
         data pd.DataFrame: data
     '''
-    return pd.read_csv(filename, index_col=0)
+    try:
+        return pd.read_csv(filename, index_col=0)
+    except FileNotFoundError:
+        raise Exception ('Please specify path and filename correctly!!!')
 
 

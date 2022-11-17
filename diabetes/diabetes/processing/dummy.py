@@ -12,9 +12,12 @@ def generate(data, columns_l):
     Return:
         proc_data pd.DataFrame: processed dataframe
     '''
-    proc_data = pd.get_dummies(data=data, columns=columns_l)
+    try:
+        proc_data = pd.get_dummies(data=data, columns=columns_l)
+        return proc_data
 
-    return proc_data
+    except KeyError:
+        raise Exception ('Please make sure columns exist in your data!!')
 
 def binarize(data, init_column_name, binarized_column_name):
     '''Generate binary variable for gender
@@ -27,9 +30,9 @@ def binarize(data, init_column_name, binarized_column_name):
     Return:
         proc_data pd.DataFrame: processed dataframe
     '''
-
-    proc_data = pd.get_dummies(data=data, columns=[init_column_name], drop_first=True)
-    proc_data = proc_data.rename(columns={[col for col in proc_data.columns if f'{init_column_name}_' in col][0]: binarized_column_name})
-    
-
-    return proc_data
+    try:
+        proc_data = pd.get_dummies(data=data, columns=[init_column_name], drop_first=True)
+        proc_data = proc_data.rename(columns={[col for col in proc_data.columns if f'{init_column_name}_' in col][0]: binarized_column_name})
+        return proc_data
+    except KeyError:
+        raise Exception ('Please make sure columns exist in your data!!')       
