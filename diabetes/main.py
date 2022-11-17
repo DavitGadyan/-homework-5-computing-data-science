@@ -5,6 +5,9 @@ from diabetes.processing.dummy import generate, binarize
 from diabetes.training.model import train, predict
 from diabetes.evaluating.score import roc_auc
 
+X_FEATURES = ['age', 'height', 'weight', 'aids', 'cirrhosis', 'hepatic_failure',
+'immunosuppression', 'leukemia', 'lymphoma', 'solid_tumor_with_metastasis']
+
 df = from_csv('data/sample_diabetes_mellitus_data.csv')
 
 print(df)
@@ -28,13 +31,11 @@ X_train, X_test, y_train, y_test = split(data=df, target='diabetes_mellitus')
 
 print(X_train)
 
-trained_model = train(model='rf', X_train=X_train, y_train=y_train, X_features_l=['age', 'height', 'weight', 'aids', 'cirrhosis', 'hepatic_failure',
-'immunosuppression', 'leukemia', 'lymphoma', 'solid_tumor_with_metastasis'])
+trained_model = train(model='rf', X_train=X_train, y_train=y_train, X_features_l=X_FEATURES)
 
 print('trained_model>>', trained_model)
 
-y_train, y_test = predict(trained_model, X_train, y_train, X_test, y_test, X_features_l=['age', 'height', 'weight', 'aids', 'cirrhosis', 'hepatic_failure',
-'immunosuppression', 'leukemia', 'lymphoma', 'solid_tumor_with_metastasis'])
+y_train, y_test = predict(trained_model, X_train, y_train, X_test, y_test, X_features_l=X_FEATURES)
 
 print('y_train>>>', y_train)
 print('y_test>>>', y_test)

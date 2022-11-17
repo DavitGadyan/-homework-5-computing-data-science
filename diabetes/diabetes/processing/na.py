@@ -11,9 +11,12 @@ def drop(data, columns_l):
     Return:
         proc_data pd.DataFrame: processed dataframe
     '''
-    proc_data = data.dropna(subset=columns_l)
+    try:
+        proc_data = data.dropna(subset=columns_l)
+        return proc_data
 
-    return proc_data
+    except KeyError:
+        raise Exception ('Please make sure columns exist in your data!!')
 
 def fill(data, columns_l):
     '''Fill nas from a dataframe
@@ -25,7 +28,9 @@ def fill(data, columns_l):
     Return:
         proc_data pd.DataFrame: processed dataframe
     '''
-    print(data[columns_l].mean())
-    proc_data = data.fillna(value=data[columns_l].mean())
+    try:
+        proc_data = data.fillna(value=data[columns_l].mean())
+        return proc_data
 
-    return proc_data
+    except KeyError:
+        raise Exception ('Please make sure columns exist in your data!!')
