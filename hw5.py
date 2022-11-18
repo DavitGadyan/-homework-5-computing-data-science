@@ -134,9 +134,7 @@ for elem in [10, 5, 2]:
 ### (b)
 strings = ''
 for string in ['I', 'am', 'Groot']:
-    strings += string + " "
-
-strings = strings.strip()
+    strings = (strings+"_"+string).replace("_", " ").strip()
 
 ## beforehand we were adding same string 2 times. and based on popular movie groot
 # was saying each word one time so removed last string and need to add up not just 
