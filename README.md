@@ -6,6 +6,7 @@ Python file with solution for each task
 
 ### diabetes_analysis python package 
 
+![Code Coverage](https://img.shields.io/badge/Coverage-92%25-green.svg)
 #### folder structure
 
 ```
