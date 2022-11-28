@@ -104,7 +104,7 @@ def test_count_simba_res():
 def test_get_day_month_year():
     l_datetimes = [datetime.date.today(), datetime.date.today() - datetime.timedelta(days=1)]
     exp_out = pd.DataFrame({'day': [datetime.date.today().day, (datetime.date.today() - datetime.timedelta(days=1)).day], 'month': [datetime.date.today().month, (datetime.date.today() - datetime.timedelta(days=1)).month], 'year': [datetime.date.today().year, (datetime.date.today() - datetime.timedelta(days=1)).year]})
-    out = get_day_month_year(l_datetimes)
+    output = get_day_month_year(l_datetimes)
 
     assert output.equals(exp_out)
 
